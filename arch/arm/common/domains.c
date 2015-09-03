@@ -21,7 +21,7 @@
 
 #include <asm/arm-pd.h>
 
-#define NAME_MAX 36
+#define GENPD_NAME_MAX 36
 
 #define DEBUG
 
@@ -201,7 +201,7 @@ static int __init arm_domain_init(void)
 		of_property_read_u32(np, "pstates", &of_pstates);
 
 		/* Initialize rest of CPU PM domain specifics */
-		pd->genpd.name = kstrndup(np->name, NAME_MAX, GFP_KERNEL);
+		pd->genpd.name = kstrndup(np->name, GENPD_NAME_MAX, GFP_KERNEL);
 		pd->genpd.power_off = arm_pd_power_down;
 		pd->genpd.power_on = arm_pd_power_up;
 		pd->genpd.set_pstate = arm_pd_set_pstate;
